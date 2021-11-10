@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y git && \
     mkdir -p /var/www && cd /var/www && \
     git clone https://github.com/Novik/ruTorrent.git rutorrent && \
     rm -rf ./rutorrent/.git* && cd / && \
+    cp -r ./a/plugins/* /var/www/rutorrent/plugins/ && \
     cp ./a/config.php /var/www/rutorrent/conf/ && \
     cp ./a/startup-rtorrent.sh ./a/startup-nginx.sh ./a/startup-php.sh ./a/startup-irssi.sh ./a/.rtorrent.rc ./a/setup-pyrocore.sh /root/ && \
     cp ./a/supervisord.conf /etc/supervisor/conf.d/ && \
