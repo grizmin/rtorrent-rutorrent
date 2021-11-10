@@ -12,17 +12,9 @@ RUN apt-get update && apt-get install -y git && \
     git clone https://github.com/Novik/ruTorrent.git rutorrent && \
     rm -rf ./rutorrent/.git* && cd / && \
     cp ./a/config.php /var/www/rutorrent/conf/ && \
-    cp ./a/startup-rtorrent.sh ./a/startup-nginx.sh ./a/startup-php.sh ./a/startup-irssi.sh ./a/.rtorrent.rc /root/ && \
+    cp ./a/startup-rtorrent.sh ./a/startup-nginx.sh ./a/startup-php.sh ./a/startup-irssi.sh ./a/.rtorrent.rc ./a/setup-pyrocore.sh /root/ && \
     cp ./a/supervisord.conf /etc/supervisor/conf.d/ && \
-    sed -i 's/\/var\/log/\/downloads\/\.log/g' /etc/nginx/nginx.conf && \
-    echo "rutorrent ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    echo "rtorrent user:";  sudo su - rtorrent && \
-    mkdir -p ~/bin ~/.local && \
-    git clone "https://github.com/pyroscope/pyrocore.git" ~/.local/pyroscope && \
-    ~/.local/pyroscope/update-to-head.sh && \
-    PATH=$PATH:/home/rtorrent/bin && \
-    pyroadmin --version && \
-    echo "HORRAY!"
+    sed -i 's/\/var\/log/\/downloads\/\.log/g' /etc/nginx/nginx.conf
 
 
 EXPOSE 83 446 50515 5000
